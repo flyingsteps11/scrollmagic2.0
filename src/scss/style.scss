@@ -1,0 +1,108 @@
+@mixin font($font_name, $file_name, $weight, $style) {
+
+  @font-face {
+    font-family: $font_name;
+    font-display: swap;
+    src: url("../fonts/#{$file_name}.woff") format("woff"),
+    url("../fonts/#{$file_name}.woff2") format("woff2");
+    font-weight: #{$weight};
+    font-style: #{$style};
+  }
+}
+
+@import "fonts";
+@import "media";
+
+
+html {
+  background-color: #dbad84;
+  height: 100%;
+  line-height: 1.5;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+html, body {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  min-height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+header, footer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  h1 {
+    font-size: 60px;
+  }
+}
+
+.animation2 {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.animation {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.paper-plane {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 100px;
+}
+
+
+#pinContainer {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#slideContainer {
+  width: 400%; /* to contain 4 panels, each with 100% of window width */
+  height: 100%;
+}
+
+.panel {
+  height: 100%;
+  width: 25%; /* relative to parent -> 25% of 400% = 100% of window width */
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel1 {
+  background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+}
+
+.panel2 {
+  background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
+}
+
+.panel3 {
+  background-image: linear-gradient(to top, #cc208e 0%, #6713d2 100%);
+}
+
+.panel4 {
+  background-image: linear-gradient(to top, #b3ffab 0%, #12fff7 100%);
+}
