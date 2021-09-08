@@ -217,12 +217,12 @@ clippingSlider.addEventListener('input', (event) => {
 })
 //
 //анимирование парня
-
-const scene = new ScrollMagic.Scene({
-    triggerElement: ".animation",
-    duration: 3000,
-    triggerHook: 0,
-})
-    .setTween(tween)
-    .setPin('.animation')
-    .addTo(controller);
+//
+// const scene = new ScrollMagic.Scene({
+//     triggerElement: ".animation",
+//     duration: 3000,
+//     triggerHook: 0,
+// })
+//     .setTween(tween)
+//     .setPin('.animation')
+//     .addTo(controller);
