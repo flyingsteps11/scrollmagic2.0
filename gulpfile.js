@@ -48,7 +48,8 @@ let {src, dest} = require('gulp'),
     svgSprite = require('gulp-svg-sprite'),
     ttf2woff = require('gulp-ttf2woff'),
     ttf2woff2 = require('gulp-ttf2woff2'),
-    fonter = require('gulp-fonter');
+    fonter = require('gulp-fonter'),
+    ghPages = require('gulp-gh-pages');
 
 function browserSync(params) {
     browsersync.init({
@@ -168,7 +169,12 @@ gulp.task('svgSprite', function () {
             }
         ))
         .pipe(dest(path.build.img))
-})
+});
+
+gulp.task('deploy', function () {
+    return gulp.src([project_folder + '/**/*'])
+        .pipe(ghPages());
+});
 
 function fontsStyle(params) {
     let file_content = fs.readFileSync(source_folder + '/scss/fonts.scss');
