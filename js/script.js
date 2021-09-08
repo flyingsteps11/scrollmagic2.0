@@ -118,7 +118,7 @@ setInterval(() => {
     delay += (scrollpos - delay) * accelamount;
     video.currentTime = delay;
     //console.log(video.currentTime);
-}, 33.3)
+}, )
 //
 //
 // const canvas = document.getElementById("hero-lightpass");
@@ -215,5 +215,14 @@ clippingSlider.addEventListener('input', (event) => {
     const newValue = `${event.target.value}%`
     clippedImage.style.setProperty('--exposure', newValue)
 })
-
 //
+//анимирование парня
+
+const scene = new ScrollMagic.Scene({
+    triggerElement: ".animation",
+    duration: 3000,
+    triggerHook: 0,
+})
+    .setTween(tween)
+    .setPin('.animation')
+    .addTo(controller);
