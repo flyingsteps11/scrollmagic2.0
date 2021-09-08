@@ -118,7 +118,7 @@ setInterval(() => {
     delay += (scrollpos - delay) * accelamount;
     video.currentTime = delay;
     //console.log(video.currentTime);
-}, )
+},)
 //
 //
 // const canvas = document.getElementById("hero-lightpass");
@@ -159,7 +159,6 @@ setInterval(() => {
 //     context.drawImage(images[airpods.frame], 0, 0);
 // }
 //
-
 
 
 //typing text
@@ -206,7 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //
 
 
-
 //img-compare
 const clippedImage = document.querySelector('.image-2');
 const clippingSlider = document.querySelector('.image-compare-input');
@@ -226,3 +224,32 @@ clippingSlider.addEventListener('input', (event) => {
 //     .setTween(tween)
 //     .setPin('.animation')
 //     .addTo(controller);
+
+let $block1 = $(".block1");
+let $block2 = $(".block2");
+let $block3 = $('.block3');
+let $block4 = $('.block5');
+// const tween10 = new TimelineMax()
+//     .add(TweenMax.to($block1, 0.9, {width: 60, ease: Linear.easeNone})) // draw word for 0.9
+
+const tween10 = TweenMax.fromTo($block1, 3, {opacity: 1}, {opacity: 0});
+const tween11 = TweenMax.fromTo($block2, 1.4, {width: 1}, {width: 99});
+const tween12 = TweenMax.fromTo($block4, 1.4, {x1: 0}, {x1: -22.6908})
+const scene6 = new ScrollMagic.Scene({
+    triggerElement: '.man-animation',
+    duration: 3,
+    tweenChanges: true,
+    delay: 321,
+})
+    .setTween(tween10, tween11, tween12)
+
+    .addIndicators()
+    .addTo(controller);
+
+// $(".wrapper").onepage_scroll({
+//     sectionContainer: "intro", // контейнер, к которому будет применяться скролл
+//     easing: "ease", // Тип анимации "ease", "linear", "ease-in", "ease-out", "ease-in-out"
+//     animationTime: 1000, // время анимации
+//     pagination: false, // скрыть или отобразить пагинатор
+//     updateURL: false // обновлять URL или нет
+// });

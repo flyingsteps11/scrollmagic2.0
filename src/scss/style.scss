@@ -363,6 +363,7 @@ header {
 .man-animation {
   height: 100vh;
   width: 100%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -410,6 +411,3 @@ header {
   }
 }
 
-.rew {
-  display: none;
-}
