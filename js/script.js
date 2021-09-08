@@ -117,45 +117,103 @@ scene4.on("update", e => {
 setInterval(() => {
     delay += (scrollpos - delay) * accelamount;
     video.currentTime = delay;
-    console.log(video.currentTime);
+    //console.log(video.currentTime);
 }, 33.3)
+//
+//
+// const canvas = document.getElementById("hero-lightpass");
+// const context = canvas.getContext("2d");
+//
+// canvas.width = 1158;
+// canvas.height = 770;
+//
+// const frameCount = 147;
+// const currentFrame = index => (
+//     `https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${(index + 1).toString().padStart(4, '0')}.jpg`
+// );
+//
+// const images = []
+// const airpods = {
+//     frame: 0
+// };
+//
+// for (let i = 0; i < frameCount; i++) {
+//     const img = new Image();
+//     img.src = currentFrame(i);
+//     images.push(img);
+// }
+//
+// gsap.to(airpods, {
+//     frame: frameCount - 1,
+//     snap: "frame",
+//     scrollTrigger: {
+//         scrub: 0.5
+//     },
+//     onUpdate: render // use animation onUpdate instead of scrollTrigger's onUpdate
+// });
+//
+// images[0].onload = render;
+//
+// function render() {
+//     context.clearRect(0, 0, canvas.width, canvas.height);
+//     context.drawImage(images[airpods.frame], 0, 0);
+// }
+//
 
 
-const canvas = document.getElementById("hero-lightpass");
-const context = canvas.getContext("2d");
 
-canvas.width = 1158;
-canvas.height = 770;
+//typing text
+document.addEventListener('DOMContentLoaded', () => {
+    let textBox = document.querySelector('.type-text'),
+        text = textBox.innerText,
+        newHTML = '';
 
-const frameCount = 147;
-const currentFrame = index => (
-    `https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${(index + 1).toString().padStart(4, '0')}.jpg`
-);
+    function init() {
+        for (i = 0; i < text.length; i++) {
+            if (text[i] == "\r" || text[i] == "\n") {
+                newHTML += '<br>';
+            } else {
+                newHTML += '<span>' + text[i] + '</span>';
+            }
+        }
+        textBox.innerHTML = newHTML;
 
-const images = []
-const airpods = {
-    frame: 0
-};
+        let spans = textBox.querySelectorAll('span'),
+            count = 0,
+            timeout = 150;
 
-for (let i = 0; i < frameCount; i++) {
-    const img = new Image();
-    img.src = currentFrame(i);
-    images.push(img);
-}
+        function typing_text() {
+            spans[count].classList.add('visible');
+            if (count < spans.length - 1) {
+                setTimeout(() => {
+                    count++;
+                    typing_text();
+                }, timeout);
+            } else {
+                setTimeout(() => {
+                    newHTML = '';
+                    init();
+                }, 2000);
 
-gsap.to(airpods, {
-    frame: frameCount - 1,
-    snap: "frame",
-    scrollTrigger: {
-        scrub: 0.5
-    },
-    onUpdate: render // use animation onUpdate instead of scrollTrigger's onUpdate
+            }
+        }
+
+        typing_text();
+    }
+
+    init();
 });
+//
 
-images[0].onload = render;
 
-function render() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(images[airpods.frame], 0, 0);
-}
 
+//img-compare
+const clippedImage = document.querySelector('.image-2');
+const clippingSlider = document.querySelector('.image-compare-input');
+
+clippingSlider.addEventListener('input', (event) => {
+    const newValue = `${event.target.value}%`
+    clippedImage.style.setProperty('--exposure', newValue)
+})
+
+//
